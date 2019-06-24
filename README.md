@@ -2,9 +2,9 @@
 High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQL.
 
 ### To Use
-1. Clone this Repository
+1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
 2. Rename `.dist.env` to `.env`.
-3. Run DB Migrations
+3. Run DB Migrations. 
 4. Run locally with `python app/main.py`, or with the included Dockerfile / Docker-Compose file.
 
 ### Stack & Features
