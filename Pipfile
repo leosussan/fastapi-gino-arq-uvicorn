@@ -12,7 +12,7 @@ sqlalchemy-utils = "*"
 alembic = "*"
 psycopg2-binary = "*"
 uvicorn = "*"
-pydantic = {extras = ["email"],version = "*"}
+email_validator = "*"
 
 [requires]
 python_version = "3.7"
