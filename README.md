@@ -14,5 +14,6 @@ High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQ
 * **PostgreSQL:** Robust, fully-featured, scalable, open-source.
 
 #### Additional Libraries
-* **Alembic:** Compatible with GINO, handles database migrations.
-* **SQLAlchemy_Utils:** Compatible with GINO, provides essential handles & datatypes.
+* **Pydantic:** Core to FastAPI. Define how data should be in pure, canonical python; validate it with pydantic. 
+* **Alembic:** Handles database migrations. Compatible with GINO.
+* **SQLAlchemy_Utils:** Provides essential handles & datatypes. Compatible with GINO.
