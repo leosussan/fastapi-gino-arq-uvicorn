@@ -1,17 +1,22 @@
+# Native libraries
 import sys
-from logging.config import fileConfig
-
 sys.path.extend(['./'])
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-from alembic import context
-
-from app.models.orm.base import db
-from app.settings.globals import ALEMBIC_CONFIG
-
-######### MODELS FOR MIGRATIONS: #########
+######################## --- MODELS FOR MIGRATIONS --- ########################
+from app.application import db
 from app.models.orm.user import User
+
+# To include a model in migrations, add a line here.
+
+###############################################################################
+
+# Third party packages
+from sqlalchemy import engine_from_config, pool
+from alembic import context
+from logging.config import fileConfig
+
+# App imports
+from app.settings.globals import ALEMBIC_CONFIG
 
 config = context.config
 fileConfig(config.config_file_name)
