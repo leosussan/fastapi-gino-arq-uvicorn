@@ -1,0 +1,13 @@
+# IDE Fragments
+/.vscode
+*__pycache__*
+*.idea*
+
+# Environments
+.env
+
+# Docker Files
+docker-compose.yml
+
+# Ignore Files
+.gitignore

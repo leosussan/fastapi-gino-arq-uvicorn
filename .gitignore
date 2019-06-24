@@ -1,0 +1,7 @@
+# IDE Fragments
+/.vscode
+*__pycache__*
+*.idea*
+
+# Environment Files
+/.env
