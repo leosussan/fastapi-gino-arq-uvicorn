@@ -3,9 +3,6 @@
 *__pycache__*
 *.idea*
 
-# Environments
-.env
-
 # Docker Files
 docker-compose.yml
 
