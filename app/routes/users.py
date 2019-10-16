@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.post('/users', tags=['Users'], response_model=UserSchema)
 async def create_user(request: UserCreateIn):
-    new_user: User = await User.create(request.dict())
+    new_user: User = await User.create(**request.dict())
     return UserSchema.from_orm(new_user)
 
 
