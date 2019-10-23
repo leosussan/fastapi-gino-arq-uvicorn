@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   app:
@@ -15,7 +15,7 @@ services:
 
   database:
     image: "postgres:latest"
-    container_name: postgresql11
+    container_name: postgresql
     restart: always
     ports:
       - 54320:5432
@@ -24,5 +24,4 @@ services:
     volumes:
       - database_data:/var/lib/postgresql/data
 
-volumes:
-  database_data:
+volumes: database_data:
