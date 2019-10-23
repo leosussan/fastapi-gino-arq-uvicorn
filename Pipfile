@@ -19,6 +19,7 @@ psycopg2-binary = "*"
 uvicorn = "*"
 email_validator = "*"
 arq = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.7"
