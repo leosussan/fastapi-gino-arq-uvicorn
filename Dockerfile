@@ -5,11 +5,11 @@ RUN pip install pipenv
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 
-RUN apk update && apk add gcc libffi-dev g++ postgresql-dev
+RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make
 
 RUN pipenv install --system --deploy --ignore-pipfile
 
-RUN apk del libffi-dev g++
+RUN apk del libffi-dev g++ make
 
 COPY ./app /app/app
 
