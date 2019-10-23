@@ -7,7 +7,9 @@ High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQ
 2. Run `pipenv install` from root. (Run `pip install pipenv` first, if necessary.)
 3. Rename `.dist.env` to `.env`. Fill in PostgreSQL connection vars.
 4. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
-5. Run locally with `python app/main.py`, or with the included Dockerfile / Docker-Compose file.
+5. Run:
+    * _For Active Development (w/ auto-reload):_ Run locally with `pipenv run uvicorn app.main:app --reload `
+    * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
 
 ### Run Locally with Docker-Compose
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
