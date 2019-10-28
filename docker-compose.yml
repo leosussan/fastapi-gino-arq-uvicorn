@@ -1,8 +1,10 @@
-version: '3'
+version: "3"
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: fastapi-gino-postgres
     image: fastapi-gino-postgres
     env_file: .env

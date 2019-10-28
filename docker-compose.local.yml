@@ -5,6 +5,8 @@ services:
     container_name: fastapi-gino-postgres
     image: fastapi-gino-postgres
     environment:
+      - REDIS_IP=cache
+      - REDIS_PORT=6379
       - DB_HOST=database
       - DATABASE=postgres
       - DB_USER=postgres
@@ -20,12 +22,14 @@ services:
     depends_on:
       - database
       - redis
-    volumes:
-      - cloudsql:/cloudsql
     environment:
       - REDIS_IP=cache
       - REDIS_PORT=6379
-      - CLOUDSQL_CONNECTION_METHOD=unix
+      - DB_HOST=database
+      - DATABASE=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
     env_file: .env
 
   redis:
@@ -45,4 +49,5 @@ services:
     volumes:
       - database_data:/var/lib/postgresql/data
 
-volumes: database_data:
+volumes:
+  database_data:
