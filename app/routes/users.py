@@ -1,32 +1,32 @@
 from fastapi import APIRouter
 
-from ..models.orm.user import User
-from ..models.pydantic.user import User as UserSchema, UserCreateIn, UserUpdateIn
+from ..models.orm.user import ORMUser
+from ..models.pydantic.user import User, UserCreateIn, UserUpdateIn
 
 router = APIRouter()
 
 
-@router.post('/users', tags=['Users'], response_model=UserSchema)
+@router.post("/users", tags=["Users"], response_model=User)
 async def create_user(request: UserCreateIn):
-    new_user: User = await User.create(**request.dict())
-    return UserSchema.from_orm(new_user)
+    new_user: ORMUser = await ORMUser.create(**request.dict())
+    return User.from_orm(new_user)
 
 
-@router.get('/users/{id}', tags=['Users'], response_model=UserSchema)
+@router.get("/users/{id}", tags=["Users"], response_model=User)
 async def retrieve_user(id: int):
-    user: User = await User.get(id)
-    return UserSchema.from_orm(user)
+    user: ORMUser = await ORMUser.get(id)
+    return User.from_orm(user)
 
 
-@router.put('/users/{id}', tags=['Users'], response_model=UserSchema)
+@router.put("/users/{id}", tags=["Users"], response_model=User)
 async def update_user(request: UserUpdateIn, id: int):
-    user: User = await User.get(id)
-    updated_fields: UserSchema = UserSchema.from_orm(request)
+    user: ORMUser = await ORMUser.get(id)
+    updated_fields: User = User.from_orm(request)
     await user.update(**updated_fields.dict(skip_defaults=True)).apply()
-    return UserSchema.from_orm(user)
+    return User.from_orm(user)
 
 
-@router.delete('/users/{id}', tags=['Users'], response_model=UserSchema)
+@router.delete("/users/{id}", tags=["Users"], response_model=User)
 async def delete_user(id: int):
-    user: User = await User.get(id)
+    user: ORMUser = await ORMUser.get(id)
     return await user.delete()
