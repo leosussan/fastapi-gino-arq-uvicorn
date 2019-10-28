@@ -8,6 +8,7 @@ black = "*"
 bandit = "*"
 flake8 = "*"
 rope = "*"
+watchgod = "*"
 
 [packages]
 fastapi = "*"

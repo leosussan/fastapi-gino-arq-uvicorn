@@ -6,12 +6,15 @@ High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQ
 _NOTE: You must have PostgreSQL & Redis running locally._
 
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
-2. Run `pipenv install` from root. (Run `pip install pipenv` first, if necessary.)
+2. Run `pipenv install --dev` from root. (Run `pip install pipenv` first, if necessary.)
 3. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis connection vars.
 4. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
 5. Run:
-    * _For Active Development (w/ auto-reload):_ Run locally with `pipenv run uvicorn app.main:app --reload `
-    * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
+    - FastAPI Application:
+        * _For Active Development (w/ auto-reload):_ Run locally with `pipenv run uvicorn app.main:app --reload `
+        * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
+    - Background Task Worker:
+        * _For Active Development:_ Run with `pipenv run arq app.worker.Worker --watch ./`
 
 ### Run Locally with Docker-Compose
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
@@ -34,8 +37,8 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 ### Core Dependencies
 * **FastAPI:** touts performance on-par with NodeJS & Go + automatic Swagger + ReDoc generation. 
 * **GINO:** built on SQLAlchemy core. Lightweight, simple, asynchronous ORM for PostgreSQL.
+* **Arq:** Asyncio + Redis = fast, resource-light job queuing & RPC.
 * **Uvicorn:** Lightning-fast, asynchronous ASGI server.
-* **ARQ:** Asyncio + Redis = fast, resource-light job queuing & RPC.
 * **Optimized Dockerfile:** Optimized Dockerfile for ASGI applications, from https://github.com/tiangolo/uvicorn-gunicorn-docker.
 
 #### Additional Dependencies
