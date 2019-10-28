@@ -1,0 +1,16 @@
+FROM python:3.7-alpine
+
+RUN pip install pipenv
+
+COPY Pipfile Pipfile
+COPY Pipfile.lock Pipfile.lock
+
+RUN apk update && apk add --no-cache gcc libffi-dev openssl-dev g++ postgresql-dev make
+
+RUN pipenv install --system --deploy --ignore-pipfile
+
+RUN apk del libffi-dev g++ make
+
+COPY ./app /app
+
+CMD ["arq", "app.worker.WorkerSettings"]

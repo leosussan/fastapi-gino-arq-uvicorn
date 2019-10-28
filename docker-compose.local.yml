@@ -5,6 +5,8 @@ services:
     container_name: fastapi-gino-postgres
     image: fastapi-gino-postgres
     environment:
+      - REDIS_IP=cache
+      - REDIS_PORT=6379
       - DB_HOST=database
       - DATABASE=postgres
       - DB_USER=postgres
@@ -12,10 +14,33 @@ services:
       - DB_PORT=5432
     depends_on:
       - database
+      - redis
+
+  worker:
+    container_name: fastapi-gino-postgres-worker
+    image: fastapi-gino-postgres-worker
+    depends_on:
+      - database
+      - redis
+    environment:
+      - REDIS_IP=cache
+      - REDIS_PORT=6379
+      - DB_HOST=database
+      - DATABASE=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    env_file: .env
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
 
   database:
     image: "postgres:latest"
-    container_name: postgresql
+    container_name: database
     restart: always
     ports:
       - 54320:5432
@@ -24,4 +49,5 @@ services:
     volumes:
       - database_data:/var/lib/postgresql/data
 
-volumes: database_data:
+volumes:
+  database_data:
