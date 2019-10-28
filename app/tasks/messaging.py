@@ -1,4 +1,4 @@
-from ..main import db
+from ..application import db
 from ..models.pydantic.user import User
 from ..models.orm.user import User as ORMUser
 
