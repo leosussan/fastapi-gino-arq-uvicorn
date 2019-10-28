@@ -16,7 +16,7 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 ### Run Locally with Docker-Compose
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
 2. Generate a DB Migration: `alembic revision --autogenerate`.*
-3. Run locally using docker-compose. `docker-compose -f docker-compose.local.yml -f docker-compose.yml up --build`.
+3. Run locally using docker-compose. `docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build`.
 
 *`app/settings/prestart.sh` will run migrations for you before the app starts.
 
@@ -27,6 +27,7 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * Store complex db queries in `/app/models/orm/queries`
 * Store complex tasks for foreground + background in `app/tasks`.
 * Add / edit globals to `/.env`, expose & import them from `/app/settings/globals.py`
+    * Add background coroutines to the `ARQ_BACKGROUND_FUNCTIONS` global
 * Define code to run before launch (migrations, setup, etc) in `/app/settings/prestart.sh`
 
 ## Features
