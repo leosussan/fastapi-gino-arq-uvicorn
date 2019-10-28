@@ -1,11 +1,11 @@
-# fastapi-gino-arq-postgres
+# fastapi-gino-arq-uvicorn
 High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powered by Redis & PostgreSQL).
 
 ## Get Started
 ### Run Locally
 _NOTE: You must have PostgreSQL & Redis running locally._
 
-1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-postgres.git`
+1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
 2. Run `pipenv install --dev` from root. (Run `pip install pipenv` first, if necessary.)
 3. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis connection vars.
 4. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
@@ -17,7 +17,7 @@ _NOTE: You must have PostgreSQL & Redis running locally._
         * _For Active Development:_ Run with `pipenv run arq app.worker.Worker --watch ./`
 
 ### Run Locally with Docker-Compose
-1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-postgres.git`
+1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
 2. Generate a DB Migration: `alembic revision --autogenerate`.*
 3. Run locally using docker-compose. `docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build`.
 
