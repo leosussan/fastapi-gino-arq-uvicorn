@@ -28,9 +28,9 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * Create database models to `/app/models/orm`, add them to `/app/models/orm/migrations/env.py` for migrations
 * Create pydantic models in `/app/models/pydantic`
 * Store complex db queries in `/app/models/orm/queries`
-* Store complex tasks for foreground + background in `app/tasks`.
+* Store complex tasks in `app/tasks`.
 * Add / edit globals to `/.env`, expose & import them from `/app/settings/globals.py`
-    * Add background coroutines to the `ARQ_BACKGROUND_FUNCTIONS` global
+    * Use any coroutine as a background function: store a reference in the `ARQ_BACKGROUND_FUNCTIONS` env.
 * Define code to run before launch (migrations, setup, etc) in `/app/settings/prestart.sh`
 
 ## Features
