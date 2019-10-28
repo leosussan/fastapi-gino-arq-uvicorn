@@ -31,6 +31,7 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * Store complex tasks in `app/tasks`.
 * Add / edit globals to `/.env`, expose & import them from `/app/settings/globals.py`
     * Use any coroutine as a background function: store a reference in the `ARQ_BACKGROUND_FUNCTIONS` env.
+    * Set `SENTRY_DSN` in your environment to enable Sentry.
 * Define code to run before launch (migrations, setup, etc) in `/app/settings/prestart.sh`
 
 ## Features
@@ -45,5 +46,6 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * **Pydantic:** Core to FastAPI. Define how data should be in pure, canonical python; validate it with pydantic. 
 * **Alembic:** Handles database migrations. Compatible with GINO.
 * **SQLAlchemy_Utils:** Provides essential handles & datatypes. Compatible with GINO.
+* **Sentry:** Open-source, cloud-hosted error + event monitoring.
 * **PostgreSQL:** Robust, fully-featured, scalable, open-source.
 * **Redis:** Fast, simple, broker for the Arq task queue.
