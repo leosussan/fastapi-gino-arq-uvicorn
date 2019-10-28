@@ -18,7 +18,10 @@ alembic = "*"
 psycopg2-binary = "*"
 uvicorn = "*"
 email_validator = "*"
+<<<<<<< HEAD
 arq = "*"
+=======
+>>>>>>> a9fa1910365bf035aa51c469cf8c717ef5281a4d
 sentry-sdk = "*"
 
 [requires]
