@@ -1,8 +1,8 @@
 from importlib import import_module
 
-from app.main import db
-from app.settings.arq import settings
-from app.settings.globals import DATABASE_CONFIG, ARQ_BACKGROUND_FUNCTIONS
+from .application import db
+from .settings.arq import settings
+from .settings.globals import DATABASE_CONFIG, ARQ_BACKGROUND_FUNCTIONS
 
 
 FUNCTIONS: list = [
