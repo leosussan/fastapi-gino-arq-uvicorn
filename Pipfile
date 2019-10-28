@@ -17,6 +17,7 @@ alembic = "*"
 psycopg2-binary = "*"
 uvicorn = "*"
 email_validator = "*"
+arq = "*"
 
 [requires]
 python_version = "3.7"
