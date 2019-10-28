@@ -3,9 +3,11 @@ High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQ
 
 ## Get Started
 ### Run Locally
+_NOTE: You must have PostgreSQL & Redis running locally._
+
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-postgres.git`
 2. Run `pipenv install` from root. (Run `pip install pipenv` first, if necessary.)
-3. Rename `.dist.env` to `.env`. Fill in PostgreSQL connection vars.
+3. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL connection vars.
 4. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
 5. Run:
     * _For Active Development (w/ auto-reload):_ Run locally with `pipenv run uvicorn app.main:app --reload `
