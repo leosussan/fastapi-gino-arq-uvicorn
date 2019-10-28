@@ -12,10 +12,31 @@ services:
       - DB_PORT=5432
     depends_on:
       - database
+      - redis
+
+  worker:
+    container_name: fastapi-gino-postgres-worker
+    image: fastapi-gino-postgres-worker
+    depends_on:
+      - database
+      - redis
+    volumes:
+      - cloudsql:/cloudsql
+    environment:
+      - REDIS_IP=cache
+      - REDIS_PORT=6379
+      - CLOUDSQL_CONNECTION_METHOD=unix
+    env_file: .env
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
 
   database:
     image: "postgres:latest"
-    container_name: postgresql
+    container_name: database
     restart: always
     ports:
       - 54320:5432
