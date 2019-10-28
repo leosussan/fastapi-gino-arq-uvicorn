@@ -1,5 +1,5 @@
 # fastapi-arq-gino-postgres
-High-performance Async REST API, in Python. FastAPI + GINO + Uvicorn + PostgreSQL.
+High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powered by Redis & PostgreSQL).
 
 ## Get Started
 ### Run Locally
