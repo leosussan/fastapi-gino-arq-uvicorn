@@ -1,4 +1,4 @@
-from importlib import import_module
+from pydantic.utils import import_string
 
 from .application import db
 from .settings.arq import settings
@@ -6,11 +6,8 @@ from .settings.globals import DATABASE_CONFIG, ARQ_BACKGROUND_FUNCTIONS
 
 
 FUNCTIONS: list = [
-    getattr(import_module(function_path), function_name)
-    for function_path, function_name in [
-        background_function.rsplit(".", 1)
-        for background_function in list(ARQ_BACKGROUND_FUNCTIONS)
-    ]
+    import_string(background_function)
+    for background_function in list(ARQ_BACKGROUND_FUNCTIONS)
 ] if ARQ_BACKGROUND_FUNCTIONS is not None else list()
 
 
