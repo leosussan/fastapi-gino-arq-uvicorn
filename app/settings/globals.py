@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Optional
 
 from starlette.config import Config
-from starlette.datastructures import Secret, CommaSeparatedStrings
+from starlette.datastructures import CommaSeparatedStrings, Secret
 
 from ..models.pydantic.database import DatabaseURL
 

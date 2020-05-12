@@ -2,8 +2,7 @@ from pydantic.utils import import_string
 
 from .application import db
 from .settings.arq import settings
-from .settings.globals import DATABASE_CONFIG, ARQ_BACKGROUND_FUNCTIONS
-
+from .settings.globals import ARQ_BACKGROUND_FUNCTIONS, DATABASE_CONFIG
 
 FUNCTIONS: list = [
     import_string(background_function)

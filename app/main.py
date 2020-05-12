@@ -1,13 +1,13 @@
 import sys
 
-sys.path.extend(["./"])
-
 from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 from starlette.datastructures import Secret
 
 from app.application import app
 from app.routes.users import router as user_router
 from app.settings.globals import SENTRY_DSN
+
+sys.path.extend(["./"])
 
 
 ROUTERS = (user_router,)

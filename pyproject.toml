@@ -60,4 +60,4 @@ not_skip = "__init__.py"
 use_parentheses = true
 include_trailing_comma = true
 force_grid_wrap = 0
-known_third_party = ["arq", "fastapi", "gino", "pydantic", "sentry_sdk", "sqlalchemy", "sqlalchemy_utils", "starlette"]
+known_third_party = ["alembic", "arq", "fastapi", "gino", "pydantic", "sentry_sdk", "sqlalchemy", "sqlalchemy_utils", "starlette"]

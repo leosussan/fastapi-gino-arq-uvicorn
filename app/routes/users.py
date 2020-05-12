@@ -1,4 +1,4 @@
-from arq.connections import create_pool, ArqRedis
+from arq.connections import ArqRedis, create_pool
 from fastapi import APIRouter
 
 from ..models.orm.user import User as ORMUser

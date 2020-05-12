@@ -3,3 +3,4 @@ ignore = E203, E266, E501, W503, F403, F401
 max-line-length = 79
 max-complexity = 18
 select = B,C,E,F,W,T4,B9
+per-file-ignores = app/models/orm/migrations/env.py:E402
