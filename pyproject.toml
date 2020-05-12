@@ -6,3 +6,19 @@ authors = ["Leo Sussan <leosussan@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+fastapi = "^0.54.1"
+gino = "^1.0.0"
+arq = "^0.19"
+sqlalchemy-utils = "^0.36.5"
+alembic = "^1.4.2"
+psycopg2-binary = "^2.8.5"
+uvicorn = "^0.11.5"
+email_validator = "^1.1.0"
+sentry-sdk = "^0.14.3"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+bandit = "^1.6.2"
+flake8 = "^3.8.1"
+rope = "^0.17.0"
+watchgod = "^0.6"
