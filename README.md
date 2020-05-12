@@ -6,15 +6,18 @@ High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powe
 _NOTE: You must have PostgreSQL & Redis running locally._
 
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
-2. Run `pipenv install --dev` from root. (Run `pip install pipenv` first, if necessary.)
-3. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis connection vars.
-4. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
-5. Run:
+2. Install `Python 3.8` and `poetry`.
+    * _RECOMMENDED_: use `asdf`, which is like `pyenv` / `nvm` / `gvm` for everything.
+        * [Install](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm), then run `asdf plugin add python`, `asdf plugin add poetry`, and `asdf install`
+3. Run `poetry install` from root.
+4. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis connection vars.
+5. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
+6. Run:
     - FastAPI Application:
-        * _For Active Development (w/ auto-reload):_ Run locally with `pipenv run uvicorn app.main:app --reload `
+        * _For Active Development (w/ auto-reload):_ Run locally with `uvicorn app.main:app --reload`
         * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
     - Background Task Worker:
-        * _For Active Development:_ Run with `pipenv run arq app.worker.Worker --watch ./`
+        * _For Active Development:_ Run  `arq app.worker.Worker --watch ./`
 
 ### Run Locally with Docker-Compose
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
