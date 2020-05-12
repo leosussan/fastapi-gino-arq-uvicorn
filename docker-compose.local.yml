@@ -2,8 +2,8 @@ version: "3"
 
 services:
   app:
-    container_name: fastapi-gino-postgres
-    image: fastapi-gino-postgres
+    container_name: fastapi-gino-arq-uvicorn
+    image: fastapi-gino-arq-uvicorn
     environment:
       - REDIS_IP=cache
       - REDIS_PORT=6379
@@ -17,8 +17,8 @@ services:
       - redis
 
   worker:
-    container_name: fastapi-gino-postgres-worker
-    image: fastapi-gino-postgres-worker
+    container_name: fastapi-gino-arq-uvicorn-worker
+    image: fastapi-gino-arq-uvicorn-worker
     depends_on:
       - database
       - redis

@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fastapi-gino-postgres
-    image: fastapi-gino-postgres
+    container_name: fastapi-gino-arq-uvicorn
+    image: fastapi-gino-arq-uvicorn
     env_file: .env
     environment:
       - COMPOSE_CONVERT_WINDOWS_PATHS=1

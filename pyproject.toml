@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "fastapi-gino-arq-uvicorn"
+version = "0.4.0"
+description = "High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (w/ Redis and PostgreSQL)."
+authors = ["Leo Sussan <leosussan@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.54.1"
+gino = "^1.0.0"
+arq = "^0.19"
+sqlalchemy-utils = "^0.36.5"
+alembic = "^1.4.2"
+psycopg2-binary = "^2.8.5"
+uvicorn = "^0.11.5"
+email_validator = "^1.1.0"
+sentry-sdk = "^0.14.3"
+gino-starlette = "^0.1.1"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+bandit = "^1.6.2"
+flake8 = "^3.8.1"
+rope = "^0.17.0"
+watchgod = "^0.6"
+taskipy = "^1.2.1"
+
+[tool.taskipy.tasks]
+# Launch Commands for Local Development
+app = "uvicorn app.main:app --reload"
+worker = "arq app.worker.WorkerSettings --watch ./"
+# Docker-Compose Tasks
+compose-up = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build"
+compose-down = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml down --remove-orphans"

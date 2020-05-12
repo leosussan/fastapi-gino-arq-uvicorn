@@ -1,15 +1,15 @@
-FROM tiangolo/uvicorn-gunicorn:python3.7-alpine3.8
+FROM tiangolo/uvicorn-gunicorn:python3.8-alpine3.10
 
-RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make
+RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make curl
 
-RUN pip install pipenv
+RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 
-COPY Pipfile Pipfile
-COPY Pipfile.lock Pipfile.lock
+COPY pyproject.toml pyproject.toml
+COPY poetry.lock poetry.lock
 
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN source $HOME/.poetry/env && poetry config virtualenvs.create false && poetry install --no-dev --no-ansi
 
-RUN apk del libffi-dev g++ make
+RUN apk del libffi-dev g++ make curl
 
 COPY ./app /app/app
 
