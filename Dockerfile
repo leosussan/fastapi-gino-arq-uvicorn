@@ -1,7 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn:python:3.8-alpine3.10
 
-
-
 RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make curl
 
 RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
