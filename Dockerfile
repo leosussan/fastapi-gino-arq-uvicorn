@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn:python:3.8-alpine3.10
+FROM tiangolo/uvicorn-gunicorn:python3.8-alpine3.10
 
 RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make curl
 
