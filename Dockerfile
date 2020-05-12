@@ -7,7 +7,7 @@ RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poet
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
 
-RUN source $HOME/.poetry/env && poetry config virtualenvs.create false && poetry install --no-dev --no-ansi
+RUN source $HOME/.poetry/env && poetry config virtualenvs.create false && poetry install --no-dev --no-ansi --no-root
 
 RUN apk del libffi-dev g++ make curl
 
