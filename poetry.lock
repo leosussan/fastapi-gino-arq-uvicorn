@@ -219,6 +219,18 @@ starlette = ["gino-starlette (>=0.1.1,<0.2.0)"]
 tornado = ["gino-tornado (>=0.1.0,<0.2.0)"]
 
 [[package]]
+category = "main"
+description = "An extension for GINO to integrate with Starlette"
+name = "gino-starlette"
+optional = false
+python-versions = ">=3.6,<4.0"
+version = "0.1.1"
+
+[package.dependencies]
+gino = ">=1.0.0rc2,<2.0.0"
+starlette = ">=0.13.0,<0.14.0"
+
+[[package]]
 category = "dev"
 description = "Git Object Database"
 name = "gitdb"
@@ -602,7 +614,7 @@ python-versions = ">=3.6.1"
 version = "8.1"
 
 [metadata]
-content-hash = "5b0d9e053ba3f69ad8f71ea0104e6c5b66ab62d48406e561d336de5a7881fb0d"
+content-hash = "3884ddb78af0f8cfa5da6c7dfbfbf057e4fbf042dba07409184e10c1358db772"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -691,6 +703,10 @@ flake8 = [
 gino = [
     {file = "gino-1.0.0-py3-none-any.whl", hash = "sha256:5750575d25b458ac8c484f324310042485ecd8039ae67fc82bc34e06182c2737"},
     {file = "gino-1.0.0.tar.gz", hash = "sha256:0924f16e02f33f046ad3aa9bc02a7ac7cd72f89261f4447ab54fd789eb3b65fc"},
+]
+gino-starlette = [
+    {file = "gino-starlette-0.1.1.tar.gz", hash = "sha256:a1afe419b34146449a502a5483085a60a75a46639534fff50510172b47c930fb"},
+    {file = "gino_starlette-0.1.1-py3-none-any.whl", hash = "sha256:de6ec87168097a52668359c842e9e3be4d339423c7805c615377975a1a19cb6c"},
 ]
 gitdb = [
     {file = "gitdb-4.0.5-py3-none-any.whl", hash = "sha256:91f36bfb1ab7949b3b40e23736db18231bf7593edada2ba5c3a174a7b23657ac"},
