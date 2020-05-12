@@ -1,9 +1,6 @@
 FROM tiangolo/uvicorn-gunicorn:python:3.8-alpine3.10
 
-ENV PYTHONFAULTHANDLER=1 \
-  PYTHONUNBUFFERED=1 \
-  PYTHONHASHSEED=random \
-  PYTHONDONTWRITEBYTECODE=1
+
 
 RUN apk update && apk add gcc libffi-dev g++ postgresql-dev make curl
 
