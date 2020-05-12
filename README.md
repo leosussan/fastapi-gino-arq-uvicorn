@@ -14,17 +14,18 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 5. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
 6. Run:
     - FastAPI Application:
-        * _For Active Development (w/ auto-reload):_ Run locally with `uvicorn app.main:app --reload`
+        * _For Active Development (w/ auto-reload):_ Run locally with `poetry run task app`
         * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
     - Background Task Worker:
-        * _For Active Development:_ Run  `arq app.worker.Worker --watch ./`
+        * _For Active Development:_ Run  `poetry run task worker`
 
 ### Run Locally with Docker-Compose
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
 2. Generate a DB Migration: `alembic revision --autogenerate`.*
-3. Run locally using docker-compose. `docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build`.
+3. Run locally using docker-compose. `poetry run task compose-up`.
 
 *`app/settings/prestart.sh` will run migrations for you before the app starts.
+*Use `poetry run task compose-down` to bring the app down if Ctrl+C does not work.
 
 ### Build Your Application
 * Create routes in `/app/routes`, import & add them to the `ROUTERS` constant in  `/app/main.py`
@@ -46,9 +47,10 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * **Optimized Dockerfile:** Optimized Dockerfile for ASGI applications, from https://github.com/tiangolo/uvicorn-gunicorn-docker.
 
 #### Additional Dependencies
+* **PostgreSQL:** Robust, fully-featured, scalable, open-source.
+* **Redis:** Fast, simple, broker for the Arq task queue.
 * **Pydantic:** Core to FastAPI. Define how data should be in pure, canonical python; validate it with pydantic. 
 * **Alembic:** Handles database migrations. Compatible with GINO.
 * **SQLAlchemy_Utils:** Provides essential handles & datatypes. Compatible with GINO.
 * **Sentry:** Open-source, cloud-hosted error + event monitoring.
-* **PostgreSQL:** Robust, fully-featured, scalable, open-source.
-* **Redis:** Fast, simple, broker for the Arq task queue.
+* **Taskipy:** Small, flexible task runner for Poetry.
