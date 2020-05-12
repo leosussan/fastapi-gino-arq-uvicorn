@@ -28,7 +28,7 @@ taskipy = "^1.2.1"
 [tool.taskipy.tasks]
 # Launch Commands for Local Development
 app = "uvicorn app.main:app --reload"
-worker = "arq app.worker.Worker --watch ./"
+worker = "arq app.worker.WorkerSettings --watch ./"
 # Docker-Compose Tasks
 compose-up = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build"
 compose-down = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml down --remove-orphans"
