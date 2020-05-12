@@ -23,9 +23,9 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
 2. Generate a DB Migration: `alembic revision --autogenerate`.*
 3. Run locally using docker-compose. `poetry run task compose-up`.
+    * Run `poetry run task compose-down` to spin down, clean up.
 
 *`app/settings/prestart.sh` will run migrations for you before the app starts.
-*Use `poetry run task compose-down` to bring the app down if Ctrl+C does not work.
 
 ### Build Your Application
 * Create routes in `/app/routes`, import & add them to the `ROUTERS` constant in  `/app/main.py`
