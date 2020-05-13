@@ -1,5 +1,6 @@
-from pydantic import EmailStr, BaseModel
 from typing import Optional
+
+from pydantic import BaseModel, EmailStr
 
 from .base import Base
 

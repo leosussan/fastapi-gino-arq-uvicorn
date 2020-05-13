@@ -24,6 +24,8 @@ flake8 = "^3.8.1"
 rope = "^0.17.0"
 watchgod = "^0.6"
 taskipy = "^1.2.1"
+pre-commit = "^2.4.0"
+isort = {version = "^4.3.21", extras = ["pyproject"]}
 
 [tool.taskipy.tasks]
 # Launch Commands for Local Development
@@ -32,3 +34,30 @@ worker = "arq app.worker.WorkerSettings --watch ./"
 # Docker-Compose Tasks
 compose-up = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml up --build"
 compose-down = "docker-compose -f docker-compose.local.yml -f docker-compose.worker.yml -f docker-compose.yml down --remove-orphans"
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
+exclude = '''
+/(
+    \.git
+  | .vscode
+  | build
+  | dist
+  | .scripts
+  | .git-crypt
+  | services/.scripts
+  | services/.vscode
+  | core/.scripts
+  | core/.vscode
+)/
+'''
+
+[tool.isort]
+line_length = 79
+multi_line_output = 3
+not_skip = "__init__.py"
+use_parentheses = true
+include_trailing_comma = true
+force_grid_wrap = 0
+known_third_party = ["alembic", "arq", "fastapi", "gino", "pydantic", "sentry_sdk", "sqlalchemy", "sqlalchemy_utils", "starlette"]

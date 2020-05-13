@@ -1,29 +1,52 @@
 # fastapi-gino-arq-uvicorn
 High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powered by Redis & PostgreSQL).
 
-## Get Started
-### Run Locally
-_NOTE: You must have PostgreSQL & Redis running locally._
+## Contents
+* [Get Started](#get-started)
+  * [Setup](#setup)
+  * [Run](#run)
+    * [Run Locally](#run-locally)
+    * [Run Locally with Docker-Compose](#run-locally-with-docker-compose)
+  * [Build Your Application](#build-your-application)
+* [Features](#features)
+  * [Core Dependencies](#core-dependencies)
+  * [Additional Dependencies](#additional-dependencies)
 
+## Get Started
+### Setup
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
 2. Install `Python 3.8` and `poetry`.
-    * _RECOMMENDED_: use `asdf`, which is like `pyenv` / `nvm` / `gvm` for everything.
-        * [Install](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm), then run `asdf plugin add python`, `asdf plugin add poetry`, and `asdf install`
-3. Run `poetry install` from root.
-4. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis connection vars.
-5. Generate DB Migrations: `alembic revision --autogenerate`. It will be applied when the application starts. You can trigger manually with `alembic upgrade head`.
-6. Run:
+    * Recommended Method: `asdf` - a universal version manager (think `nvm` or `pyenv`)
+        * Follow [these instructions](https://asdf-vm.com/#/core-manage-asdf-vm?id=install-asdf-vm) to install `asdf`.
+        * Run the following commands from the project root:
+            * `asdf plugin add python`
+            * `asdf plugin add poetry`
+            * `asdf install` -- will download & configure this project's `Python` + `poetry` setup
+    * If you have `Python 3.8` and `poetry` installed already, please feel free to skip.
+3. Install dependencies (`poetry install`).
+4. Activate pre-commit hooks (in `poetry shell`, run `pre-commit install`).
+5. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis, Sentry (optional) variables.
+6. Generate DB Migrations: in `poetry shell`, run `alembic revision --autogenerate`. 
+    * Apply migrations manually with `alembic upgrade head`.
+    * If using the Dockerfile, migrations are applied at startup.
+
+### Run
+
+#### Run Locally
+_NOTE: You must have PostgreSQL & Redis running locally._
+
+1. Make sure PostgreSQL & Redis are running locally.
+2. Run:
     - FastAPI Application:
         * _For Active Development (w/ auto-reload):_ Run locally with `poetry run task app`
         * _For Debugging (compatible w/ debuggers, no auto-reload):_ Configure debugger to run `python app/main.py`.
     - Background Task Worker:
         * _For Active Development:_ Run  `poetry run task worker`
 
-### Run Locally with Docker-Compose
-1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
-2. Generate a DB Migration: `alembic revision --autogenerate`.*
-3. Run locally using docker-compose. `poetry run task compose-up`.
-    * Run `poetry run task compose-down` to spin down, clean up.
+#### Run Locally with Docker-Compose.
+1. Make sure `Docker` is running locally.
+2. Run `poetry run task compose-up`*.
+   - Run `poetry run task compose-down` to spin down, clean up.
 
 *`app/settings/prestart.sh` will run migrations for you before the app starts.
 
@@ -53,4 +76,5 @@ _NOTE: You must have PostgreSQL & Redis running locally._
 * **Alembic:** Handles database migrations. Compatible with GINO.
 * **SQLAlchemy_Utils:** Provides essential handles & datatypes. Compatible with GINO.
 * **Sentry:** Open-source, cloud-hosted error + event monitoring.
+* **Pre-Commit:** automatic formatting (`black` + `isort`) and linting (`flake8`).
 * **Taskipy:** Small, flexible task runner for Poetry.
