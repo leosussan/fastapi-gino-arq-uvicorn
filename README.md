@@ -1,6 +1,17 @@
 # fastapi-gino-arq-uvicorn
 High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powered by Redis & PostgreSQL).
 
+## Contents
+* [Get Started](#get-started)
+  * [Setup](#setup)
+  * [Run](#run)
+    * [Run Locally](#run-locally)
+    * [Run Locally with Docker-Compose](#run-locally-with-docker-compose)
+  * [Build Your Application](#build-your-application)
+* [Features](#features)
+  * [Core Dependencies](#core-dependencies)
+  * [Additional Dependencies](#additional-dependencies)
+
 ## Get Started
 ### Setup
 1. Clone this Repository. `git clone https://github.com/leosussan/fastapi-gino-arq-uvicorn.git`
@@ -12,17 +23,19 @@ High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powe
             * `asdf plugin add poetry`
             * `asdf install` -- will download & configure this project's `Python` + `poetry` setup
     * If you have `Python 3.8` and `poetry` installed already, please feel free to skip.
-3. Install dependencies: `poetry install`
-4. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis, Sentry (optional) variables.
-5. (Optional) Activate automatic formatting (`black` + `isort`), linting (`flake8`): in `poetry shell`, run `pre-commit install`.
-5. Generate DB Migrations: in `poetry shell`, run `alembic revision --autogenerate`. 
+3. Install dependencies (`poetry install`).
+4. Activate pre-commit hooks (in `poetry shell`, run `pre-commit install`).
+5. Make a copy of `.dist.env`, rename to `.env`. Fill in PostgreSQL, Redis, Sentry (optional) variables.
+6. Generate DB Migrations: in `poetry shell`, run `alembic revision --autogenerate`. 
     * Apply migrations manually with `alembic upgrade head`.
     * If using the Dockerfile, migrations are applied at startup.
 
-### Run Locally
+### Run
+
+#### Run Locally
 _NOTE: You must have PostgreSQL & Redis running locally._
 
-1. Make sure PostgreSQL & Redis are running locally, and variables in `.env` are set appropriately.
+1. Make sure PostgreSQL & Redis are running locally.
 2. Run:
     - FastAPI Application:
         * _For Active Development (w/ auto-reload):_ Run locally with `poetry run task app`
@@ -30,9 +43,10 @@ _NOTE: You must have PostgreSQL & Redis running locally._
     - Background Task Worker:
         * _For Active Development:_ Run  `poetry run task worker`
 
-### Run Locally with Docker-Compose
-1. Run locally using docker-compose. `poetry run task compose-up`.
-    * Run `poetry run task compose-down` to spin down, clean up.
+#### Run Locally with Docker-Compose.
+1. Make sure `Docker` is running locally.
+2. Run `poetry run task compose-up`*.
+   - Run `poetry run task compose-down` to spin down, clean up.
 
 *`app/settings/prestart.sh` will run migrations for you before the app starts.
 
