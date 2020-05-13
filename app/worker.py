@@ -1,3 +1,9 @@
+# isort:skip_file
+
+import sys
+
+sys.path.extend(["./"])
+
 from pydantic.utils import import_string
 
 from .application import db

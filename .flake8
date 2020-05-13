@@ -6,3 +6,4 @@ select = B,C,E,F,W,T4,B9
 per-file-ignores =
     app/models/orm/migrations/env.py:E402
     app/main.py:E402
+    app/worker.py:E402
