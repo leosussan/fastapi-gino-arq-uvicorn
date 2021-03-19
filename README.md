@@ -2,15 +2,17 @@
 High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powered by Redis & PostgreSQL).
 
 ## Contents
-* [Get Started](#get-started)
-  * [Setup](#setup)
-  * [Run](#run)
-    * [Run Locally](#run-locally)
-    * [Run Locally with Docker-Compose](#run-locally-with-docker-compose)
-  * [Build Your Application](#build-your-application)
-* [Features](#features)
-  * [Core Dependencies](#core-dependencies)
-  * [Additional Dependencies](#additional-dependencies)
+- [fastapi-gino-arq-uvicorn](#fastapi-gino-arq-uvicorn)
+  - [Contents](#contents)
+  - [Get Started](#get-started)
+    - [Setup](#setup)
+    - [Run](#run)
+      - [Run Locally](#run-locally)
+      - [Run Locally with Docker-Compose.](#run-locally-with-docker-compose)
+    - [Build Your Application](#build-your-application)
+  - [Features](#features)
+    - [Core Dependencies](#core-dependencies)
+      - [Additional Dependencies](#additional-dependencies)
 
 ## Get Started
 ### Setup
@@ -22,6 +24,7 @@ High-performance Async REST API, in Python. FastAPI + GINO + Arq + Uvicorn (powe
             * `asdf plugin add python`
             * `asdf plugin add poetry`
             * `asdf install` -- will download & configure this project's `Python` + `poetry` setup
+        * _~NOTE_: your machine must have a system version of Python installed. If you don't, run the following: `asdf install python 3.8.2 && asdf global python 3.8.2`
     * If you have `Python 3.8` and `poetry` installed already, please feel free to skip.
 3. Install dependencies (`poetry install`).
 4. Activate pre-commit hooks (in `poetry shell`, run `pre-commit install`).
